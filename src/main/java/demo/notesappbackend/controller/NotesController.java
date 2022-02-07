@@ -17,12 +17,12 @@ import demo.notesappbackend.repository.NotesRepository;
 @RequestMapping("/api")
 @CrossOrigin("*")
 public class NotesController {
-	
+
 	@Autowired
 	NotesRepository nRepo;
-	
+
 	@GetMapping("/notes")
-	public ResponseEntity<List<Note>> readNotes () {
+	public ResponseEntity<List<Note>> readNotes() {
 		return new ResponseEntity<List<Note>>(nRepo.findAll(), HttpStatus.OK);
 	}
 }
