@@ -1,5 +1,11 @@
 package demo.notesappbackend.entity;
 
+import java.util.Date;
+
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -21,29 +27,12 @@ public class Note {
 	private String body;
 
 	private String category;
-
-	public String getTitle() {
-		return title;
-	}
-
-	public void setTitle(String title) {
-		this.title = title;
-	}
-
-	public String getBody() {
-		return body;
-	}
-
-	public void setBody(String body) {
-		this.body = body;
-	}
-
-	public String getCategory() {
-		return category;
-	}
-
-	public void setCategory(String category) {
-		this.category = category;
-	}
-
+	
+	@Column(name = "created_at", nullable = false, updatable = false)
+	@CreationTimestamp
+	private Date createdAt;
+	
+	@Column(name = "updated_at")
+	@UpdateTimestamp
+	private Date updatedAt;
 }
